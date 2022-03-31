@@ -34,9 +34,10 @@ public class Book {
 		return price;
 	}
 
-	public void setPrice(float price) throws IOException {
+	public void setPrice(float price) throws InvalidPriceException {
+		System.out.println("setprice");
 		if (price <= 0) {
-			throw new IOException("Price > 0");
+			throw new InvalidPriceException("Price > 0");
 		}
 		this.price = price;
 	}
