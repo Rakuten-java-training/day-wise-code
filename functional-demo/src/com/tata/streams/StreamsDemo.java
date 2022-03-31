@@ -3,9 +3,7 @@ package com.tata.streams;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamsDemo {
@@ -15,24 +13,10 @@ public class StreamsDemo {
 		list.add(-1);
 		list.add(10);
 		Stream<Integer> s1 = list.stream();
-		Stream filtered = s1.filter(new Predicate<Integer>() {
-
-			@Override
-			public boolean test(Integer arg0) {
-				System.out.println(arg0);
-				return arg0>0;
-			}
-		});
-		Optional<Integer> reduced = filtered.reduce(new BinaryOperator<Integer>() {
-
-			@Override
-			public Integer apply(Integer previous, Integer current) {
-				System.out.println(previous+", "+current);
-				return previous+ current;
-			}
-		});
+		Stream<Integer> filtered = s1.filter((Integer arg0) -> arg0 > 0);
+		Optional<Integer> reduced = filtered.reduce((Integer previous, Integer current) -> previous + current);
 		System.out.println(reduced.get());
-		
+
 //		List<Integer> finalvalue= (List<Integer>) filtered.collect(Collectors.toList());
 //		System.out.println(finalvalue);
 	}
