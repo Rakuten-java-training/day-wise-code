@@ -1,5 +1,3 @@
-import java.io.IOException;
-
 enum STATUS {
 	NEW, DAMAGED, RETURN
 }
