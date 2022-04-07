@@ -19,11 +19,11 @@ public class UserController {
 	UserService service; // only reference
 
 	@PostMapping
-	@ResponseStatus(code = HttpStatus.CREATED) //set response code to 201
-	void saveUser(@RequestBody User user) {
+	@ResponseStatus(code = HttpStatus.CREATED) // set response code to 201
+	Integer saveUser(@RequestBody User user) {
 		System.out.println(user.getName());
 		System.out.println(user.getAge());
-		service.save(user);
+		return service.save(user);
 	}
 
 	@GetMapping // localhost:8081/user
