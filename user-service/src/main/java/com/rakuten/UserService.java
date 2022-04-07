@@ -20,8 +20,18 @@ public class UserService {
 	}
 
 	public List<User> getUserByName(String name) {
+		// validations
 		List<User> filteredUsers = users.stream().filter((user) -> user.getName().equals(name))
 				.collect(Collectors.toList());
 		return filteredUsers;
+	}
+
+	public List<User> getUserByAge(int age) {
+		if (age <= 0) {
+			throw new IllegalArgumentException("age cannot be negative=" + age);
+		}
+		List<User> filteredUsers = users.stream().filter((user) -> user.getAge() == age).collect(Collectors.toList());
+		return filteredUsers;
+
 	}
 }
